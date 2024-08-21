@@ -11,14 +11,14 @@ The `alfresco-testcontainers` provides integration of [Alfresco](https://github.
 
 ```xml
 <dependency>
-    <groupId>org.opensearch</groupId>
+    <groupId>org.alfresco</groupId>
     <artifactId>alfresco-testcontainers</artifactId>
     <version>0.8.0</version>
     <scope>test</scope>
 </dependency>
 ```
 
-The `opensearch-testcontainers` can be used with [JUnit 4](https://junit.org/junit4/) or [JUnit 5](https://junit.org/junit5/).
+The `alfresco-testcontainers` can be used with [JUnit 4](https://junit.org/junit4/) or [JUnit 5](https://junit.org/junit5/).
 
 ## JUnit 4 Integration
 
