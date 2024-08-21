@@ -12,6 +12,68 @@
   <name>alfresco-testcontainers</name>
   <description>A Testcontainers implementation for Alfresco.</description>
 
+  <url>http://www.hyland.com/</url>
+  <inceptionYear>2005</inceptionYear>
+  <organization>
+    <name>Alfresco Software</name>
+    <url>http://www.hyland.com/</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>Engineering</id>
+      <name>Alfresco Software - Engineering team</name>
+      <url>http://www.hyland.com/</url>
+      <timezone>Europe/London</timezone>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License v3.0 or later</name>
+      <url>http://www.gnu.org/licenses/lgpl-3.0-standalone.html</url>
+    </license>
+  </licenses>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/AlfrescoLabs/alfresco-testcontainers/issues/</url>
+  </issueManagement>
+
+  <profiles>
+    <profile>
+      <id>mavenCentral</id>
+      <distributionManagement>
+        <repository>
+          <id>central-releases-staging</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+          <id>central-snapshots</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.5</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
