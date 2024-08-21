@@ -51,10 +51,6 @@ jobs:
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           gpg --batch --yes --pinentry-mode loopback --passphrase $GPG_SIGNING_PASSPHRASE --list-keys
 
-      - name: Set version
-        run:
-          mvn versions:set -PmavenCentral "-DnewVersion=0.8.0"
-
       - name: Build and publish to Maven Central
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
