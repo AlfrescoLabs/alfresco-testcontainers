@@ -21,6 +21,43 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
 
+      - name: Configure Maven settings.xml
+        run: |
+          mkdir -p /home/runner/.m2
+          cat > /home/runner/.m2/settings.xml <<EOL
+          <settings>
+            <servers>
+              <server>
+                <id>ossrh</id>
+                <username>${{ secrets.OSS_SONATYPE_USERNAME }}</username>
+                <password>${{ secrets.OSS_SONATYPE_PASSWORD }}</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>ossrh</id>
+                <properties>
+                  <gpg.executable>gpg</gpg.executable>
+                  <gpg.passphrase>${{ secrets.GPG_SIGNING_PASSPHRASE }}</gpg.passphrase>
+                </properties>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>ossrh</activeProfile>
+            </activeProfiles>
+          </settings>
+          EOL
+
+      - name: Import GPG key
+        env:
+          GPG_TTY: $(tty)
+        run: |
+          echo "${{ secrets.GPG_SIGNING_PRIVATE_KEY }}" | gpg --batch --import
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpg --batch --yes --pinentry-mode loopback --passphrase $GPG_SIGNING_PASSPHRASE --list-keys
+
       - name: Set projects Maven version to GitHub Action GUI set version
         run: mvn versions:set "-DnewVersion=${{ github.event.inputs.releaseversion }}"
 
