@@ -58,4 +58,4 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
           MAVEN_OPTS: --add-opens java.base/java.util=ALL-UNNAMED
         run: 
-          mvn clean deploy -PmavenCentral -DskipTests -DstagingRepositoryId=orgalfresco-3075 --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
+          mvn clean deploy -PmavenCentral -DskipTests -DstagingRepositoryId=orgalfresco --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
