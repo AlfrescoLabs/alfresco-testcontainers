@@ -13,6 +13,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          server-id: 'ossrh'
+          server-username: ${{ secrets.OSS_SONATYPE_USERNAME }}
+          server-password: ${{ secrets.OSS_SONATYPE_PASSWORD }}
       
       - name: Configure Maven settings.xml
         run: |
