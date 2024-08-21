@@ -40,6 +40,13 @@
     <url>https://github.com/AlfrescoLabs/alfresco-testcontainers/issues/</url>
   </issueManagement>
 
+  <scm>
+    <connection>scm:git:https://github.com/AlfrescoLabs/alfresco-testcontainers.git</connection>
+    <developerConnection>scm:git:https://github.com/AlfrescoLabs/alfresco-testcontainers.git</developerConnection>
+    <url>https://github.com/AlfrescoLabs/alfresco-testcontainers</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <profiles>
     <profile>
       <id>mavenCentral</id>
