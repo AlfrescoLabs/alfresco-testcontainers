@@ -59,5 +59,11 @@ jobs:
         run: 
           mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
 
+      - name: Get Staging Repository ID
+        id: get-staging-repo-id
+        run: |
+          REPO_ID=$(mvn nexus-staging:repositories -DstagingRepositoryId=* --settings /home/runner/.m2/settings.xml | grep -oP 'Staging repository ID: \K[^\s]+')
+          echo "STAGING_REPO_ID=$REPO_ID" >> $GITHUB_ENV          
+
       - name: Release staged artifacts
-        run: mvn nexus-staging:release -PmavenCentral --settings /home/runner/.m2/settings.xml          
+        run: mvn nexus-staging:release -DstagingRepositoryId=${{ env.STAGING_REPO_ID }} --settings /home/runner/.m2/settings.xml          
