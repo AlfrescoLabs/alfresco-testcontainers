@@ -52,13 +52,10 @@
       <id>mavenCentral</id>
       <distributionManagement>
         <repository>
-          <id>central-releases-staging</id>
-          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+          <id>ossrh</id>
+          <name>Central Repository OSSRH</name>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-        <snapshotRepository>
-          <id>central-snapshots</id>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
       </distributionManagement>
       <build>
         <plugins>
@@ -96,8 +93,8 @@
             <version>1.7.0</version>
             <extensions>true</extensions>
             <configuration>
-              <serverId>central-releases-staging</serverId>
-              <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org</nexusUrl>
               <autoReleaseAfterClose>true</autoReleaseAfterClose>
             </configuration>
             <executions>
