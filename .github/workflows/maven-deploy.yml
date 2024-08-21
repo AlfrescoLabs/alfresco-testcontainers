@@ -56,7 +56,5 @@ jobs:
           GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
-          # https://github.com/maricn/logback-slack-appender/issues/31
-          MAVEN_OPTS: --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED
         run: 
           mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
