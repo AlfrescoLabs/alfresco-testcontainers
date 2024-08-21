@@ -96,7 +96,7 @@
             <version>1.7.0</version>
             <extensions>true</extensions>
             <configuration>
-              <serverId>central-releases-staging</serverId>
+              <serverId>ossrh</serverId>
               <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
               <autoReleaseAfterClose>true</autoReleaseAfterClose>
             </configuration>
