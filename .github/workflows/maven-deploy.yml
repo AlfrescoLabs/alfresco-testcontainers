@@ -21,7 +21,7 @@ jobs:
           <settings>
             <servers>
               <server>
-                <id>ossrh</id>
+                <id>central-releases-staging</id>
                 <username>${{ secrets.OSS_SONATYPE_USERNAME }}</username>
                 <password>${{ secrets.OSS_SONATYPE_PASSWORD }}</password>
               </server>
