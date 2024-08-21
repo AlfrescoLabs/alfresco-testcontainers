@@ -16,8 +16,8 @@ jobs:
       
       - name: Configure Maven settings.xml
         run: |
-          mkdir -p ~/.m2
-          cat > ~/.m2/settings.xml <<EOL
+          mkdir -p /home/runner/.m2
+          cat > /home/runner/.m2/settings.xml <<EOL
           <settings>
             <servers>
               <server>
@@ -46,4 +46,4 @@ jobs:
           echo "${{ secrets.GPG_SIGNING_PRIVATE_KEY }}" | base64 --decode | gpg --batch --import
 
       - name: Publish package
-        run: mvn clean deploy -PmavenCentral -DskipTests --settings ~/.m2/settings.xml
+        run: mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml
