@@ -16,4 +16,4 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_SIGNING_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
       - name: Publish package
-        run: mvn deploy -PmavenCentral -DskipTests
+        run: mvn deploy -PmavenCentral -DskipTests -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
