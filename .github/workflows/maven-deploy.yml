@@ -53,7 +53,7 @@ jobs:
 
       - name: Set version
         run:
-          mvn versions:set "-DnewVersion=0.8.0"
+          mvn versions:set -PmavenCentral "-DnewVersion=0.8.0"
 
       - name: Build and publish to Maven Central
         env:
