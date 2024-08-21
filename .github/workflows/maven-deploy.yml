@@ -54,5 +54,7 @@ jobs:
       - name: Publish package
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
+          MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
         run: 
           mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
