@@ -13,9 +13,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: 'ossrh'
-          server-username: ${{ secrets.OSS_SONATYPE_USERNAME }}
-          server-password: ${{ secrets.OSS_SONATYPE_PASSWORD }}
       
       - name: Configure Maven settings.xml
         run: |
@@ -25,11 +22,6 @@ jobs:
             <servers>
               <server>
                 <id>central-releases-staging</id>
-                <username>${{ secrets.OSS_SONATYPE_USERNAME }}</username>
-                <password>${{ secrets.OSS_SONATYPE_PASSWORD }}</password>
-              </server>
-              <server>
-                <id>ossrh</id>
                 <username>${{ secrets.OSS_SONATYPE_USERNAME }}</username>
                 <password>${{ secrets.OSS_SONATYPE_PASSWORD }}</password>
               </server>
