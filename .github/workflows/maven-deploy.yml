@@ -60,4 +60,4 @@ jobs:
           mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
 
       - name: Release staged artifacts
-        run: mvn nexus-staging:release --settings /home/runner/.m2/settings.xml          
+        run: mvn nexus-staging:release -PmavenCentral --settings /home/runner/.m2/settings.xml          
