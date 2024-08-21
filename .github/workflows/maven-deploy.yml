@@ -46,4 +46,6 @@ jobs:
           echo "${{ secrets.GPG_SIGNING_PRIVATE_KEY }}" | base64 --decode | gpg --batch --import
 
       - name: Publish package
-        run: mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
+        run: mvn clean deploy -PmavenCentral -DskipTests --settings /home/runner/.m2/settings.xml -Dgpg.passphrase=${{ secrets.GPG_SIGNING_PASSPHRASE }}
