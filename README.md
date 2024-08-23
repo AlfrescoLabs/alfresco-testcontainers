@@ -56,6 +56,15 @@ alfrescoContainer.getPostgreSQLContainer()
 alfrescoContainer.getActivemqContainer() 
 ```
 
+To spawn an Alfresco Enterprise container, you can use the following line of code:
+
+```java
+AlfrescoContainer<?> alfrescoContainer = new AlfrescoContainer<>(DockerImageName.parse("quay.io/alfresco/alfresco-content-repository:23.2.1"));
+```
+
+>> Note: Accessing Alfresco Enterprise requires customer credentials for [quay.io](https://quay.io/organization/alfresco)
+
+
 ### Unavailable configurations
 
 As of now, the AlfrescoContainer does not natively support the following containers and features:

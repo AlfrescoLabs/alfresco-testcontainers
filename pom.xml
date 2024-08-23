@@ -7,7 +7,7 @@
 
   <groupId>org.alfresco</groupId>
   <artifactId>alfresco-testcontainers</artifactId>
-  <version>0.8.0</version>
+  <version>0.8.1</version>
 
   <name>alfresco-testcontainers</name>
   <description>A Testcontainers implementation for Alfresco.</description>

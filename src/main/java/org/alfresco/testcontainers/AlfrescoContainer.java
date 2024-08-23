@@ -18,6 +18,9 @@ public class AlfrescoContainer<SELF extends AlfrescoContainer<SELF>> extends Gen
     // Alfresco Community Docker base image
     private static final DockerImageName DEFAULT_ALFRESCO_IMAGE_NAME = DockerImageName.parse("alfresco/alfresco-content-repository-community");
 
+    // Alfresco Enterprise Docker base image
+    private static final DockerImageName DEFAULT_ALFRESCO_ENTERPRISE_IMAGE_NAME = DockerImageName.parse("quay.io/alfresco/alfresco-content-repository");
+
     // PostgreSQL Docker base image
     private static final DockerImageName DEFAULT_POSTGRESQL_IMAGE_NAME = DockerImageName.parse("postgres:15.6");
 
@@ -72,15 +75,17 @@ public class AlfrescoContainer<SELF extends AlfrescoContainer<SELF>> extends Gen
     }
 
     /**
-     * Create an Alfresco Community Container by passing the full docker image name.
+     * Create an Alfresco Community or Alfresco Enterprise Container by passing the full docker image name.
      *
      * @param dockerImageName Full docker image name as a {@link DockerImageName}, like:
+     *      DockerImageName.parse("alfresco/alfresco-content-repository:7.4.1")
+     *      DockerImageName.parse("alfresco/alfresco-content-repository:23.2.1")
      *      DockerImageName.parse("alfresco/alfresco-content-repository-community:7.4.1")
      *      DockerImageName.parse("alfresco/alfresco-content-repository-community:23.2.1")
      */
     public AlfrescoContainer(final DockerImageName dockerImageName) {
         super(dockerImageName);
-        dockerImageName.assertCompatibleWith(DEFAULT_ALFRESCO_IMAGE_NAME);
+        dockerImageName.assertCompatibleWith(DEFAULT_ALFRESCO_IMAGE_NAME, DEFAULT_ALFRESCO_ENTERPRISE_IMAGE_NAME);
         this.network = Network.newNetwork();
     }
 

@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 import org.json.JSONObject;
+import org.testcontainers.utility.DockerImageName;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -139,6 +140,32 @@ class AlfrescoContainerTest {
         });
 
         LOGGER.info("Completed testAlfrescoWithActiveMQ successfully");
+    }
+
+    /**
+     * Test the creation of a Enterprise AlfrescoContainer for version 23.x.
+     * Ensures that the container starts, the expected port is mapped, and the container stops without throwing any exceptions.
+     */
+    @DisplayName("Create default AlfrescoContainer Enterprise")
+    @Test
+    void testAlfrescoEnterprise() {
+        LOGGER.info("Starting testAlfrescoEnterprise");
+
+        AlfrescoContainer<?> alfrescoContainer = new AlfrescoContainer<>(DockerImageName.parse("quay.io/alfresco/alfresco-content-repository:23.2.1"));
+        assertDoesNotThrow(() -> {
+            LOGGER.info("Starting Enterprise AlfrescoContainer");
+            alfrescoContainer.start();
+        });
+
+        LOGGER.info("Verifying port mapping for Enterprise AlfrescoContainer version 23.x");
+        Assertions.assertNotNull(alfrescoContainer.getMappedPort(8080), "Port 8080 should be mapped");
+
+        assertDoesNotThrow(() -> {
+            LOGGER.info("Stopping Enteprise AlfrescoContainer");
+            alfrescoContainer.stop();
+        });
+
+        LOGGER.info("Completed testAlfrescoEnterprise successfully");
     }
 
     /**
